@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-
+import {toast} from 'react-toastify';
 
 function ToDo(){
     const [tasks, setTask] = useState(()=>{
@@ -35,11 +35,15 @@ function ToDo(){
     }
 
     function saveEdit(index){
-      if(!editText.trim()) return;
+      if(!editText.trim()){
+        toast.error('task cannot be empty');
+        return;
+      };
 
       setTask(tasks=> tasks.map((task,i)=>
       i===index?{...task,text:editText}:task
       ))
+      toast.success('Task saved successfully')
       setEditIndex(null);
       setEditText('');
     };
@@ -56,6 +60,7 @@ function ToDo(){
         );
         if(!confirmed) return;
       setTask(tasks.filter((_, i) => i !== index));
+      toast.success('Task deleted successfully')
     }
 
     function cancelEdit() {
@@ -65,15 +70,19 @@ function ToDo(){
     
   
     function addTask(){
-      if (!newTask.trim()) return; 
+      if (!newTask.trim()){
+        toast.error('Task cannot be empty');
+        return;
+      }; 
       setTask(t => [...t, {text:newTask, completed:false}]);
+      toast.success('Successfully added')
       setNewTask('');
     }
 
     function toggleTask(index){
       setTask(tasks=> tasks.map((task,i)=>
       i===index ? {...task,completed:!task.completed}:task
-      ))
+    ))
     }
   
     return (
