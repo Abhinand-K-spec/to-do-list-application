@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #000000, #116608);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@ body {
 
 
 .todolist {
-  background: #ffffff;
+  background: #ced3cf;
   width: 360px;
   padding: 24px;
   border-radius: 16px;
@@ -47,7 +47,7 @@ body {
   border-color: #667eea;
 }
 
-/* Buttons */
+
 .add-btn {
   background: #667eea;
   color: white;
@@ -102,4 +102,121 @@ li span {
 .delete-btn:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.task-item input {
+  width: 16px;
+  height: 16px;
+}
+
+.completed span {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filters button {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  background: #f1f1f1;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+.filters button:hover {
+  background: #e2e2e2;
+}
+
+
+.filters button.active {
+  background: #667eea;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.35);
+}
+
+.fallbackText{
+  padding-left: 100px;
+  color: hsl(0, 1%, 55%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.task-item {
+  flex: 1;
+  min-width: 0; 
+}
+
+
+.edit-input {
+  flex: 1;
+  min-width: 0;
+
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 8px;
+  border: 2px solid #667eea;
+
+  background: #ffffff;
+  color: #222;
+
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+
+  transition: 
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+
+.actions button {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.actions button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+
+li:has(.edit-input) {
+  background: #e8f0ff;
+  border: 1px solid #667eea;
+}
+
+
+li:has(.edit-input) .delete-btn {
+  opacity: 0.3;
+  pointer-events: none;
 }
